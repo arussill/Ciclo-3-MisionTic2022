@@ -1,0 +1,168 @@
+
+
+<h1 style="text-align: center;">Reportes</h1>
+<br>
+<div style="max-width: 600px; margin: auto;">
+  <h3 style="text-align: center;">Productos Mejor Calificados</h3>
+  <br>
+  <canvas id="myChart" ></canvas>
+  <br>
+  <h3 style="text-align: center;">Productos en más Listas de Deseos</h3>
+  <br>
+  <canvas id="myChart2" ></canvas>
+  <br>
+  <h3 style="text-align: center;">Productos más Comentados</h3>
+  <br>
+  <canvas id="myChart3" ></canvas>
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+  //Gráfico 1
+  const labels = [{% for product in pro %} '{{product.producto}}', {% endfor %}];
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Calificados',
+      data: [{% for product in pro %} '{{product.calificacion}}', {% endfor %}],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+      borderWidth: 1
+    }]
+  };
+
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  };
+
+  var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+
+  //Gráfico 2
+  const labels2 = [{% for product in pro %} '{{product.producto}}', {% endfor %}];
+  const data2 = {
+    labels: labels2,
+    datasets: [{
+      axis: 'y',
+      label: 'Favoritos',
+      data: [{% for product in pro %} '{{product.favs}}', {% endfor %}],
+      fill: false,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+      borderWidth: 1
+    }]
+  };
+
+  const config2 = {
+    type: 'bar',
+    data:data2,
+    options: {
+      indexAxis: 'y',
+    }
+  };
+
+  var myChart2 = new Chart(
+    document.getElementById('myChart2'),
+    config2
+  );
+
+    //Gráfico 3
+  const labels3 = [{% for product in pro %} '{{product.producto}}', {% endfor %}];
+  const data3 = {
+    labels: labels3,
+    datasets: [{
+      label: 'Comentados',
+      data: [{% for product in pro %} '{{product.comentarios}}', {% endfor %}],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+      borderWidth: 1
+    }]
+  };
+
+
+  const config3 = {
+    type: 'bar',
+    data: data3,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  };
+
+  var myChart3 = new Chart(
+    document.getElementById('myChart3'),
+    config3
+  );
+
+
+
+</script>
+

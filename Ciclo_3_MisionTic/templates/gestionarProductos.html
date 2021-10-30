@@ -1,0 +1,342 @@
+<!-- Heredamos de base.html -->
+{% extends "base.html" %}
+
+{%block title%}
+Gestionar Productos
+{%endblock%}
+
+
+{% block content %}
+<!-- sesion de agregar producto nuevo -->
+<section class="py-5 text-center container" >
+    <!-- card -->
+    <div class="card shadow">
+     <!-- cuerpo de card -->
+        <div class="card-body">
+            <!-- agregar nuevo producto -->
+            <p class="card-tile" style="font-family: Arial, Helvetica, sans-serif; font-weight:bold; color:rgb(53, 53, 168)">Agregar nuevo producto</p>
+            <form action="" style="background-color:#f8f9fa;" method="get">
+                 <!-- Imagen del producto-->
+                <p>{{form.imagen}}</p>
+                <!-- Nombre del producto -->
+                <p>
+                    {{form.nom.label}}
+                    {{form.nom}}
+                </p>
+                <!-- Precio del producto -->
+                <p>
+                    {{form.pre.label}}
+                    {{form.pre}}
+                </p>
+                <!-- descripcion del producto -->
+                <p>
+                    {{form.des.label}}
+                    {{form.des}}
+                </p>
+                <!-- Codigo del producto -->
+                <p>
+                    {{form.cod.label}}
+                    {{form.cod}}
+                </p>
+                <!-- inicio division de botones --> 
+                
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <!-- botones -->
+                        {{form.delete}}
+                        {{form.save}}
+                    </div>
+                </div>
+                <!-- fin division de los botones -->
+            </form>
+            <!-- fin del formulario -->
+        </div>
+        <!-- fin cuerpo de card -->
+    </div>
+    <!-- termina card -->
+</section>
+<!-- fin de la secionde agregar producto nuevo -->
+
+<!-- secion de barra de busqueda -->
+<section>
+    <div class="d-flex justify-content-between align-items-center" style="padding-top: 0px;padding-bottom: 0px;">
+        <form class="d-flex" style="position: relative; left:70px;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+    </div>
+</section>
+<!-- fin de secion de barra de busqueda -->
+
+<!-- inicia sesion de productos -->
+<section>
+    <div class="album py-5 bg-light">
+        <!-- contenedor -->
+        <div class="container">
+            <!-- empiezan el contenedor con tres columnas -->
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <!-- fila 1 col 1 -->
+                    <div class="col">
+                        <div class="card shadow-sm">
+                                <!-- Imagen del producto -->
+                                <img src="{{ url_for ('static',filename='img/patilla.jpeg')}}"class="card-img-top" alt="patilla">
+                            <!--inicia cuerpo de la card -->
+                            <div class="card-body">
+                                <!-- Nombre del producto -->
+                                <p class="card-text">Patilla</p>
+                                <!-- precio del producto -->
+                                <p class="card-text">Precio del producto</p>
+                                <!-- descripcion del producto -->
+                                <p class="card-text">Descripcion del producto: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa tempore corporis maiores at. Quo quibusdam quidem ullam consectetur! Libero praesentium minus ipsa dolor quis illo doloremque distinctio nemo repellat. Beatae.</p>
+                                <!-- Codigo del producto -->
+                                <p class="card-text">codigo del producto:1</p>
+                                <!-- inicio division de botones -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <!-- botones -->
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    </div>
+                                </div>
+                                <!-- fin division de los botones -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fin fila 1 col 1 -->
+                    
+                <!-- fila 1 col 2 -->
+                <div class="col">
+                    <div class="card shadow-sm">
+                            <!-- Imagen del producto -->
+                            <img src="{{ url_for ('static',filename='img/papaya.jpg')}}" class="card-img-top" alt="papaya">
+                        <!--inicia cuerpo de la card -->
+                        <div class="card-body">
+                            <!-- Nombre del producto -->
+                            <p class="card-text">Papaya</p>
+                            <!-- precio del producto -->
+                            <p class="card-text">Precio del producto</p>
+                            <!-- descripcion del producto -->
+                            <p class="card-text">Descripcion del producto: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa tempore corporis maiores at. Quo quibusdam quidem ullam consectetur! Libero praesentium minus ipsa dolor quis illo doloremque distinctio nemo repellat. Beatae.</p>
+                            <!-- Codigo del producto -->
+                            <p class="card-text">codigo del producto:2</p>
+                            <!-- inicio division de botones -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- botones -->
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                            </div>
+                            <!-- fin division de los botones -->
+                        </div>
+                    </div>
+                </div>
+                <!-- fin fila 1 col 2 -->
+
+                <!-- fila 1 col 3 -->
+                <div class="col">
+                    <div class="card shadow-sm">
+                            <!-- Imagen del producto -->
+                            <img src="{{ url_for ('static',filename='img/banana.jpeg')}}"  class="card-img-top" alt="banana..">
+                        <!--inicia cuerpo de la card -->
+                        <div class="card-body">
+                            <!-- Nombre del producto -->
+                            <p class="card-text">Banana</p>
+                            <!-- precio del producto -->
+                            <p class="card-text">Precio del producto</p>
+                            <!-- descripcion del producto -->
+                            <p class="card-text">Descripcion del producto: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa tempore corporis maiores at. Quo quibusdam quidem ullam consectetur! Libero praesentium minus ipsa dolor quis illo doloremque distinctio nemo repellat. Beatae.</p>
+                            <!-- Codigo del producto -->
+                            <p class="card-text">codigo del producto:3</p>
+                            <!-- inicio division de botones -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- botones -->
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                            </div>
+                            <!-- fin division de los botones -->
+                        </div>
+                    </div>
+                </div>
+                <!-- fin fila 1 col 3 -->
+
+                <!-- fila 2 col 1 -->
+                <div class="col">
+                    <div class="card shadow-sm">
+                            <!-- Imagen del producto -->
+                            <img src="{{ url_for ('static',filename='img/cebolla.jpg')}}"class="card-img-top" alt="cebolla">
+                        <!--inicia cuerpo de la card -->
+                        <div class="card-body">
+                            <!-- Nombre del producto -->
+                            <p class="card-text">Cebolla</p>
+                            <!-- precio del producto -->
+                            <p class="card-text">Precio del producto</p>
+                            <!-- descripcion del producto -->
+                            <p class="card-text">Descripcion del producto: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa tempore corporis maiores at. Quo quibusdam quidem ullam consectetur! Libero praesentium minus ipsa dolor quis illo doloremque distinctio nemo repellat. Beatae.</p>
+                            <!-- Codigo del producto -->
+                            <p class="card-text">codigo del producto:4</p>
+                            <!-- inicio division de botones -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- botones -->
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                            </div>
+                            <!-- fin division de los botones -->
+                        </div>
+                    </div>
+                </div>
+                <!-- fin fila 2 col 2 -->
+
+                <!-- fila 2 col 2 -->
+                <div class="col">
+                    <div class="card shadow-sm">
+                            <!-- Imagen del producto -->
+                            <img src="{{ url_for ('static',filename='img/pimenton_rojo.jpg')}}" class="card-img-top" alt="pimenton_rojo">
+                        <!--inicia cuerpo de la card -->
+                        <div class="card-body">
+                            <!-- Nombre del producto -->
+                            <p class="card-text">Pimenton Rojo</p>
+                            <!-- precio del producto -->
+                            <p class="card-text">Precio del producto</p>
+                            <!-- descripcion del producto -->
+                            <p class="card-text">Descripcion del producto: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa tempore corporis maiores at. Quo quibusdam quidem ullam consectetur! Libero praesentium minus ipsa dolor quis illo doloremque distinctio nemo repellat. Beatae.</p>
+                            <!-- Codigo del producto -->
+                            <p class="card-text">codigo del producto:5</p>
+                            <!-- inicio division de botones -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- botones -->
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                            </div>
+                            <!-- fin division de los botones -->
+                        </div>
+                    </div>
+                </div>
+                <!-- fin de fila 2 col 2 -->
+
+                <!-- fila 2 col 3 -->
+                <div class="col">
+                    <div class="card shadow-sm">
+                            <!-- Imagen del producto -->
+                            <img src="{{ url_for ('static',filename='img/manzana.jpg')}}"  class="card-img-top" alt="manzana">
+                        <!--inicia cuerpo de la card -->
+                        <div class="card-body">
+                            <!-- Nombre del producto -->
+                            <p class="card-text">Manzana</p>
+                            <!-- precio del producto -->
+                            <p class="card-text">Precio del producto</p>
+                            <!-- descripcion del producto -->
+                            <p class="card-text">Descripcion del producto: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa tempore corporis maiores at. Quo quibusdam quidem ullam consectetur! Libero praesentium minus ipsa dolor quis illo doloremque distinctio nemo repellat. Beatae.</p>
+                            <!-- Codigo del producto -->
+                            <p class="card-text">codigo del producto:6</p>
+                            <!-- inicio division de botones -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- botones -->
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                            </div>
+                            <!-- fin division de los botones -->
+                        </div>
+                    </div>
+                </div>
+                <!-- fin de fila 2 col 3 -->
+
+                <!-- fila 3 col 1 -->
+                <div class="col">
+                    <div class="card shadow-sm">
+                            <!-- Imagen del producto -->
+                            <img src="{{ url_for ('static',filename='img/patilla.jpeg')}}"class="card-img-top" alt="patilla">
+                        <!--inicia cuerpo de la card -->
+                        <div class="card-body">
+                            <!-- Nombre del producto -->
+                            <p class="card-text">Patilla</p>
+                            <!-- precio del producto -->
+                            <p class="card-text">Precio del producto</p>
+                            <!-- descripcion del producto -->
+                            <p class="card-text">Descripcion del producto: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa tempore corporis maiores at. Quo quibusdam quidem ullam consectetur! Libero praesentium minus ipsa dolor quis illo doloremque distinctio nemo repellat. Beatae.</p>
+                            <!-- Codigo del producto -->
+                            <p class="card-text">codigo del producto</p>
+                            <!-- inicio division de botones -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- botones -->
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                            </div>
+                            <!-- fin division de los botones -->
+                        </div>
+                    </div>
+                </div>
+                <!-- fin de fila 3 col 1 -->
+
+                <!--fila 3 col 2 -->
+                <div class="col">
+                    <div class="card shadow-sm">
+                            <!-- Imagen del producto -->
+                            <img src="{{ url_for ('static',filename='img/patilla.jpeg')}}"class="card-img-top" alt="patilla">
+                        <!--inicia cuerpo de la card -->
+                        <div class="card-body">
+                            <!-- Nombre del producto -->
+                            <p class="card-text">Patilla</p>
+                            <!-- precio del producto -->
+                            <p class="card-text">Precio del producto</p>
+                            <!-- descripcion del producto -->
+                            <p class="card-text">Descripcion del producto: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa tempore corporis maiores at. Quo quibusdam quidem ullam consectetur! Libero praesentium minus ipsa dolor quis illo doloremque distinctio nemo repellat. Beatae.</p>
+                            <!-- Codigo del producto -->
+                            <p class="card-text">codigo del producto</p>
+                            <!-- inicio division de botones -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- botones -->
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                            </div>
+                            <!-- fin division de los botones -->
+                        </div>
+                    </div>
+                </div>
+                <!-- fin de fila 3 col 2 -->
+                
+                <!-- fila 3 col 3 -->
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <!-- Imagen del producto -->
+                        <img src="{{ url_for ('static',filename='img/patilla.jpeg')}}"class="card-img-top" alt="patilla">
+                        <!--inicia cuerpo de la card -->
+                        <div class="card-body">
+                            <!-- Nombre del producto -->
+                            <p class="card-text">Patilla</p>
+                            <!-- precio del producto -->
+                            <p class="card-text">Precio del producto</p>
+                            <!-- descripcion del producto -->
+                            <p class="card-text">Descripcion del producto: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa tempore corporis maiores at. Quo quibusdam quidem ullam consectetur! Libero praesentium minus ipsa dolor quis illo doloremque distinctio nemo repellat. Beatae.</p>
+                            <!-- Codigo del producto -->
+                            <p class="card-text">codigo del producto</p>
+                            <!-- inicio division de botones -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- botones -->
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                            </div>
+                            <!-- fin division de los botones -->
+                        </div>
+                    </div>
+                </div>
+                <!-- fin de fila 3 col 3 -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

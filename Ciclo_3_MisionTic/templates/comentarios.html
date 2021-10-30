@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+{% block title %} Comentarios {% endblock title %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comentarios | ecommerce</title>
+</head>
+<body>
+  
+   <a href="list" style="padding: 0px 50px;"> <img title="lista de deseos" src="/static/imagenes/carrito.png" alt="icono"
+    width="25" height="25"></a>
+<br>
+<img src="/static/imagenes/logo2.png" style="padding: 0px 200px;" alt="icono"
+    width="200" height="150">
+  
+    <div class="card mb-3" style="max-width: 1200px; margin: auto; color:rgba(60, 12, 235, 0.794);"> <h1 style="max-width: 800px; margin: auto;">Administrar Comentarios</h1> </div>
+  
+  <div class="card mb-3" style="max-width: 1200px; margin: auto; color:rgba(29, 22, 54, 0.794);">
+  <table>
+    <tr><td>| Id producto </td><td>| Fecha </td><td>| Producto </td><td>| Comentario </td><td> | Opciones | </td></tr> 
+    <tr><td>| 1232131231212 </td><td>| 10/10/2021 </td><td>| limonada de coco</td><td>| ajifqiwjf qij fijqif  fikqbfi fiuf  fhf </td><td><select name="sc" id="idsc">
+      <option value="0">ver</option>
+      <option value="1">editar</option>
+      <option value="2">eliminar</option>
+      <option value="2">ir al producto</option>
+  </select> </td><td><input type="submit" value="aplicar"></td></tr>
+  <tr><td>| 12387686576 </td><td>| 01/10/2021 </td><td>| Patilla cuadrada </td><td>| ajifq oijaweoif aowfiona aojf jqif  fikqbfi fiuf  fhf </td><td><select name="sc" id="idsc">
+    <option value="0">ver</option>
+    <option value="1">editar</option>
+    <option value="2">eliminar</option>
+    <option value="2">ir al producto</option>
+</select> </td><td><input type="submit" value="aplicar"></td></tr>
+
+  </table>
+  </div>
+ <br>
+ <br>
+  
+
+ <div class="card mb-3" style="max-width: 1200px; margin: auto;">
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem unde consectetur totam delectus minima, eius ipsam officia quisquam, neque atque, assumenda ex dolorum repellat illo facilis repudiandae ipsa quas provident?</p>
+ </div>
+
+
+</body>
+</html>
+
+{% endblock %}

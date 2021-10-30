@@ -1,0 +1,356 @@
+{% extends "base.html" %}
+
+{% block title %} Admin {% endblock title %}
+
+{% block content %}
+<div style="padding-left: 78px; padding-right: 78px;">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Productos</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Gestionar comentarios</button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Gestionar usuarios</button>
+        </li>
+        {% if session.rol=="SuperAdmin" %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#report" type="button" role="tab" aria-controls="report" aria-selected="false">Reportes</button>
+        </li>
+        {% endif %}
+    </ul>
+
+      <div class="tab-content" id="myTabContent">
+
+        <!-- Gestionar Productos-->
+
+
+
+
+
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+          <section class="py-5 text-center container" >
+            <!-- card -->
+            <div class="card shadow">
+             <!-- cuerpo de card -->
+                <div class="card-body">
+                    <!-- agregar nuevo producto -->
+                    <p class="card-tile" style="font-family: Arial, Helvetica, sans-serif; font-weight:bold; color:rgb(53, 53, 168)">Agregar nuevo producto</p>
+
+                    <form action="/admin/guardarProducto" style="background-color:#f8f9fa;" method="post" enctype="multipart/form-data">
+                         <!-- Imagen del producto-->
+                        <p>{{form.imagen}}</p>
+                        <!-- Nombre del producto -->
+                        <p>
+                            {{form.nom.label}}
+                            {{form.nom}}
+                        </p>
+                        <!-- Precio del producto -->
+                        <p>
+                            {{form.pre.label}}
+                            {{form.pre}}
+                        </p>
+                        <!-- descripcion del producto -->
+                        <p>
+                            {{form.des.label}}
+                            {{form.des}}
+                        </p>
+                        <!-- Codigo del producto -->
+                        <!-- <p>
+                            {{form.cod.label}}
+                            {{form.cod}}
+                        </p> -->
+                        <!-- inicio division de botones -->
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <!-- botones -->
+
+                                {{form.save}}
+                            </div>
+                        </div>
+                        <!-- fin division de los botones -->
+                    </form>
+                    <!-- fin del formulario -->
+                </div>
+                <!-- fin cuerpo de card -->
+            </div>
+            <!-- termina card -->
+        </section>
+        <!-- fin de la secionde agregar producto nuevo -->
+
+        <!-- secion de barra de busqueda -->
+        <section>
+          <div class="d-flex justify-content-between align-items-center" style="padding-top: 0px;padding-bottom: 0px;">
+              <form action="/admin/buscarproducto" class="d-flex" style="position: relative; left:70px;" method="POST">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="buscar" >
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+          </div>
+      </section>
+      <br>
+      <!-- fin de secion de barra de busqueda -->
+
+
+                  <!-- empiezan el contenedor con tres columnas -->
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                      <!-- fila 1 col 1 -->
+
+                              {% for producto in productos %}
+
+
+                                <div class="card shadow-sm">
+                                      <!-- Imagen del producto -->
+                                      <form action="/Edit_Producto/CambiarFoto" method="POST" enctype="multipart/form-data">
+                                      <p class="card-text"><input type="text" name="codigo" id="codigo" value="{{producto.codigo}}" style="border: none; background-color: white;" readonly></p>
+                                      <img src="{{producto.img}}"class="card-img-top" alt="patilla" width="150" height="300">
+                                      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                      aria-expanded="false">Cambiar Imagen</a>
+                                      <ul class="dropdown-menu">
+                                      <li> <div class="mb-3">
+
+                                        <input class="form-control" type="file" id="formFile" name="fileimagen"><input type="submit" value="Guardar">
+                                        </form>
+                                      </div></li></ul>
+                                  <!--inicia cuerpo de la card -->
+                                  <form action="/admin/actualizapro" method="post">
+                                    <div class="card-body">
+
+                                      <!-- Codigo del producto -->
+                                      <p class="card-text"><input type="text" name="codigo" id="cp{{producto.codigo}}" value="{{producto.codigo}}" readonly style="border: none; background-color: white;"></p>
+
+                                      <!-- Nombre del producto -->
+                                      <h5 class="card-title"><input type="text" name="nombre" value="{{producto.nombre}}" id="np{{producto.codigo}}" disabled></h5>
+
+                                      <!-- precio del producto -->
+
+                                      <p class="card-text"><input type="text" name="precio" id="pp{{producto.codigo}}" value="{{producto.precio}}" disabled></p>
+                                      <!-- descripcion del producto -->
+                                      <p class="card-text"><textarea name="descripcion" id="dp{{producto.codigo}}" cols="30" rows="5"  disabled> {{producto.des}} </textarea></p>
+
+
+
+                                      <!-- inicio division de botones -->
+                                        <div class="d-flex justify-content-between align-items-center">
+                                          <div class="btn-group">
+                                              <!-- botones -->
+                                              <input type="button" value="Editar" onclick="sa{{producto.codigo}}()" class="btn btn-primary" id="ep{{producto.codigo}}">
+                                              <input type="submit" value="Guardar" id="gp{{producto.codigo}}" disabled class="btn btn-primary">
+
+
+                                          </div>
+                                        </div>
+                                      <!-- fin division de los botones -->
+                                    </form>
+
+                                    </div>
+                                    <br>
+
+                                    <a onclick="confirmarEliminarPro{{producto.codigo}}()">
+                                      <button class="btn btn-outline-dark">Eliminar</button>
+                                    </a>
+                                    <script>
+
+                                      function sa{{producto.codigo}}(){
+                                        document.getElementById("cp{{producto.codigo}}").disabled=false;
+                                        document.getElementById("np{{producto.codigo}}").disabled=false;
+                                        document.getElementById("pp{{producto.codigo}}").disabled=false;
+                                        document.getElementById("dp{{producto.codigo}}").disabled=false;
+                                        document.getElementById("ep{{producto.codigo}}").disabled=true;
+                                        document.getElementById("gp{{producto.codigo}}").disabled=false;
+                                      }
+
+                                      function confirmarEliminarPro{{producto.codigo}}(){
+                                        var verificar = confirm("¿Desea eliminar el producto?");
+                                        if (verificar){
+                                            document.location="/admin/eliminarProducto/{{producto.codigo}}";
+                                        }
+                                      }
+
+
+                                    </script>
+
+
+                                </div>
+                              {% endfor %}
+
+
+
+                    </div>
+                          <!-- fin fila 1 col 1 -->
+
+
+
+
+      </div>
+
+
+
+
+        <!-- Gestion de Comentarios-->
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+          <br>
+          <br>
+
+          <!-- <div>
+            <label for="**">Fecha</label><input id="id_date" name="date" type="date" placeholder="dd/mm/aaaa">
+            <label for="**">Producto</label><input id="id_producto" name="productos" type="text" placeholder="producto">
+            <label for="**">Usuario</label><input id="id_user" name="user" type="text" placeholder="usuario">
+            <label for="**">Contenido</label><input id="id_cont" name="cont" type="text" placeholder="texto">
+            <br>
+            <br>
+            <label for="**">Calificacion</label><input id="id_calf" name="calf" type="text" placeholder="calificacion">
+            <label for="**">Idcomentarios</label><input id="id_idcomen" name="comen" type="text" placeholder="ID">
+            <br>
+            <br>
+          </div> -->
+
+          <br>
+          <div>
+            <table>
+              <tr>
+                <th>| Id producto </th>
+                <th>| Fecha </th>
+                <th>| Producto </th>
+                <th>| Comentario </th>
+                <th>| Usuario </th>
+                <th>| Cod Comentario </th>
+                <th>| Opciones  </th>
+              </tr>
+
+            {% for comen in comentarios %}
+            <form action="/admin/editaComentario/{{comen.id}}" method="post">
+              <tr><td>| {{comen.codigo}} </td>
+                <td>| {{comen.fecha}} </td>
+                <td>| {{comen.nombre}}</td>
+                <td>| <input type="text" name="comen" id="c{{comen.id}}" value="{{comen.comentario}}" disabled>  </td>
+                <td>| {{comen.usuario}} </td>
+                <td>| <input type="text" name="cod" id="" value="{{comen.id}}" readonly style="border: none; background-color: white;"> </td>
+
+                <td>
+
+
+                <input type="submit" disabled id="g{{comen.id}}" value="Guardar">
+                </form>
+                <button onclick="f{{comen.id}}()" >Editar</button>
+                <a href="/productos/{{comen.codigo}}"><button>Ver</button></a>
+
+                <a onclick="confirmarEliminarCom{{comen.id}}()"><button>Eliminar</button></a>
+                </td>
+              </tr>
+
+              <script>
+              function f{{comen.id}}(){
+                document.getElementById("c{{comen.id}}").disabled=false;
+                document.getElementById("g{{comen.id}}").disabled=false;
+              }
+
+
+              function confirmarEliminarCom{{comen.id}}(){
+                var verificar = confirm("¿Desea eliminar el comentario?");
+                if (verificar){
+                    document.location="/admin/eliminaComentario/{{comen.id}}"
+                }
+              }
+              </script>
+            {% endfor %}
+
+            </table>
+          </div>
+
+
+
+        </div>
+
+
+
+
+
+       <!-- Gestion de usuarios TAB -->
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <p></p>
+            <!-- Buscador -->
+            <!-- <div class="input-group" style="max-width: 500px;">
+                <input type="search" class="form-control rounded" placeholder="Buscar" aria-label="Search"
+                aria-describedby="search-addon" />
+                <button type="button" class="btn btn-outline-primary">Buscar</button>
+            </div>
+            <p></p>  -->
+            <!--Usuarios  -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                  {% for usuario in usuarios %}
+
+                  <div class="card">
+                    <form action="/admin/actualizausu" method="post">
+                    <div class="dropdown" style="margin: auto;"> <!-- boton de USER -->
+
+                      <select name="select" id="r{{usuario.id}}" disabled class="btn btn-secondary dropdown-toggle">
+                        <option value="{{usuario.rol}}" selected>{{usuario.rol}}</option>
+                        <option value="SuperAdmin" >SuperAdmin</option>
+                        <option value="Admin">Admin</option>
+                        <option value="UsuarioFinal">UsuarioFinal</option>
+                      </select>
+
+
+
+                    </div>
+
+                    <img src="{{usuario.picture}}" class="img-fluid rounded-start" alt="..." style="max-width: 300px; margin: auto;">
+
+                    <div class="card-body">
+
+                      <h5 class="card-title"><input type="text" name="cod" value="{{usuario.id}}" style="border: none; background-color: white;"></h5>
+                      <h5 class="card-title"><input type="text" name="nombre" id="n{{usuario.id}}" value="{{usuario.nombre}}" disabled></h5>
+                      <p class="card-text"><input type="text" name="correo" id="co{{usuario.email}}" value="{{usuario.email}}" disabled></p>
+                      <input type="button" value="Editar" onclick="fa{{usuario.id}}()" class="btn btn-primary" id="e{{usuario.id}}">
+                      <input type="submit" value="Guardar" id="gu{{usuario.id}}" disabled class="btn btn-primary">
+
+                      </form>
+
+
+                    </div>
+                    <a onclick="confirmarEliminarUsu{{usuario.id}}()"><button class="btn btn-outline-dark">Eliminar</button></a>
+                  </div>
+
+                    <script>
+
+                      function fa{{usuario.id}}(){
+                        document.getElementById("n{{usuario.id}}").disabled=false;
+                        document.getElementById("co{{usuario.email}}").disabled=false;
+                        document.getElementById("gu{{usuario.id}}").disabled=false;
+                        document.getElementById("r{{usuario.id}}").disabled=false;
+                        document.getElementById("e{{usuario.id}}").disabled=true;
+                      }
+                      function confirmarEliminarUsu{{usuario.id}}(){
+                        var verificar = confirm("¿Desea eliminar el Usuario?");
+                        if (verificar){
+                            document.location="/admin/eliminarUsu/{{usuario.id}}"
+                        }
+                      }
+
+                    </script>
+
+
+
+                  {% endfor %}
+
+            </div>
+          </div>
+
+               <!-- Reportes -->
+               <div class="tab-pane fade" id="report" role="tabpanel" aria-labelledby="contact-tab">
+                <p></p>
+                {% include "reportes.html" %}
+                <!--Usuarios  -->
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+              </div>
+
+    </div>
+</div>
+
+{% endblock %}

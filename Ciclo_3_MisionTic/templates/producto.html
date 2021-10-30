@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %} Product {% endblock title %}
+
+{% block content %}
+
+
+
+<br>
+<div >
+    <div class="card mb-3" style="max-width: 1200px; margin: auto;">
+        <div class="row g-0" >
+          <div class="col-md-4" style="padding-left: 50px; padding-right: 50px; margin: auto;">
+            <a href="../listadeseos/agregar/{{cod}}"><input type="image" src="../static/img/fav.png" style="max-width: 55px; position: absolute; top: 0; right: 0;"></a>
+            <img src="{{ima}}" class="img-fluid rounded-start" alt="..." >
+          
+            <br>
+            <br>
+            {% if session.rol=="UsuarioFinal" %}
+            <form action="/productos/calificar/{{cod}}" method="get">
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="padding-left: 60px;">
+                
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value=1 >
+                <label class="btn btn-outline-primary" for="btnradio1">1</label>
+              
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value=2>
+                <label class="btn btn-outline-primary" for="btnradio2">2</label>
+              
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value=3>
+                <label class="btn btn-outline-primary" for="btnradio3">3</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" value=4>
+                <label class="btn btn-outline-primary" for="btnradio4">4</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked value=5>
+                <label class="btn btn-outline-primary" for="btnradio5">5</label>
+              </div>
+                <br>
+                <br>
+                <div>
+                <input type="submit" value="Calificar" class="btn-success" style="margin-left: 100px;">
+                </div>
+            </form>           
+              
+              {% else %}
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="padding-left: 60px;">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
+                <label class="btn btn-outline-primary disabled" for="btnradio1">1</label>
+              
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-primary disabled" for="btnradio2">2</label>
+              
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outline-primary disabled" for="btnradio3">3</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+                <label class="btn btn-outline-primary disabled" for="btnradio4">4</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked>
+                <label class="btn btn-outline-primary disabled" for="btnradio5">5</label>
+              </div>
+              {% endif %}
+              <br>
+                
+                <p style="text-align: center;"><h5>Puntuación Promedio: {{puntuacion}}</h5></p>
+                {% for msg in get_flashed_messages() %}
+                <br>
+                
+                    {{msg}}
+                
+                {% endfor %}
+          </div>
+          <div class="col-md-8" style="padding-left: 50px; padding-right: 50px; ;">
+            <div class="card-body" style="margin: auto;" >
+              <h2 class="card-title" style="text-align: center;">{{nom}} - {{cod}} </h2>
+              <br>
+              <h4 class="card-title">Descripción: </h4>
+              <p class="card-text">{{des}}.</p>
+              <br>
+              <h3 class="card-title" style="text-align: center; color: green;">Precio: ${{pre}} </h3>
+              <br>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+<br>
+
+
+<!-- Comentarios-->
+<div style="margin: auto; max-width: 1200px;">
+    <ul class="list-group list-group-flush">
+
+        {% for comentario in comentarios %}
+
+        <li class="list-group-item">{{comentario.usuario}}: {{comentario.comentario}}.</li>
+        
+        {% endfor %}
+        
+      </ul>
+</div>
+<br>
+  
+  <div style="margin: auto; max-width: 1200px;">
+    <form action="/comentar/{{cod}}" method="post">
+      <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px;" name="comentario"></textarea>
+          <label for="floatingTextarea2">...</label>
+      </div>
+      <br>
+      <div> 
+  {% if session %}
+        <input type="submit" value="Agregar" class="btn btn-danger">
+      
+      </div>
+  </div>
+  {% else %}
+      <input type="submit" value="Agregar" class="btn btn-danger disabled">
+      <p style="color: red;">Debe Iniciar Sesión para poder agregar un comentario</p>
+      </div>
+  </div>
+  {% endif %}
+  </form>
+
+{% endblock %}

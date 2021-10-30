@@ -1,0 +1,101 @@
+<!-- Herencia de base -->
+{% extends "base.html" %}
+
+{%block title%}
+Productos
+{%endblock%}
+
+{% block content %}
+
+<!-- Seccion de favorito  y busqueda-->
+<section style="margin-bottom: 10px; margin-top: 10px;">
+    <!-- secion de busqueda -->
+    <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+            <form action="/produtos/busqueda" method="get" class="d-flex" style="position: relative; left:70px;">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="busqueda">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center" style="padding-right: 70px;">
+            <!-- fin de sesion de busqueda -->
+            <!-- boton -->
+            <a href="/listadeseos">
+            <button type="button" class="btn btn-outline-primary btn-sm" style="border-color: #ffffff;padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;" title="Lista de Deseos" >
+                <!-- icono de corazon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bookmark-heart" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"></path>
+                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"></path>
+                </svg>
+                <!-- fin icono de corazon -->
+            </button>
+            </a>
+            <!-- fin de boton -->
+        </div>
+      </div>
+</section>
+<!-- Fin de la sesion de fav y busqueda -->
+
+
+
+    <!--Inicio contenedro tamaño pequeño de la primera sesion -->
+    <div id="fondo" class="container-sm"  style="background-color:#f8f9fa;padding-top: 30px;">
+        <!-- Inica la el conjunto de cartas de separacion  -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            {% for pro in productos %}
+            <!-- Inicia primera carta -->
+            <div>
+
+
+            <div id="fondo-productos" class="img-fluid rounded-start ">
+                <!-- Imagen del producto -->
+                <br>
+                <a href="/productos/{{pro.codigo}}" style="text-decoration: none;">
+                <img src="{{pro.img}}" class="card-img-top" alt="..." style="box-shadow: 0 0 8px 8px white inset;" width="110" height="330">
+                </a>
+                <!-- Inicia cuerpo de la carta donde va nombre y precio del producto -->
+                <div class="card-body">
+                    <!-- Nombre del producto  -->
+                    <a href="/productos/{{pro.codigo}}" style="text-decoration: none;">
+                    <h5 class="card-title">{{pro.nombre}}</h5>
+                    </a>
+                    <!-- Precio del producto -->
+                    <p class="card-text">${{pro.precio}}</p>
+                    <!-- Empieza el contenedor de corazon de fav, numero de favs y boton de add. -->
+                    <span class="text-900 text-center">
+                        <!-- boton -->
+
+                        <a href="/listadeseos/agregar/{{pro.codigo}}">
+                        <button type="button" class="btn btn-outline-primary btn-sm" style="border-color: #ffffff;padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;border-top-width: 0px;border-bottom-width: 0px;border-left-width: 0px;border-right-width: 0px;" >
+                            <!-- icono de corazon -->
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bookmark-heart" viewBox="0 0 16 16">
+
+                                <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"></path>
+                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"></path>
+
+                            </svg>
+
+                            <!-- fin icono de corazon -->
+                        </button>
+                        </a>
+
+                        <!-- fin de boton -->
+                        <!-- numero de favs -->
+
+                    </span>
+                    <!--Fin contenedor de corazon de fav, numero de favs y boton de add. -->
+                </div>
+                <!-- Final del cuerpo de la carta -->
+            </div>
+            <!-- Final de la primera carta -->
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+<!-- Final de la primera secion de tres cartas -->
+
+{% endblock %}
+

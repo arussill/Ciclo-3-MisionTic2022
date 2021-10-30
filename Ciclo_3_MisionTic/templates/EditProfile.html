@@ -1,0 +1,367 @@
+{% extends 'base.html' %}
+{% block title %} Edit Profile {% endblock title %}
+
+{% block content %}
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Profile">
+  <meta name="description" content="">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/nicepage.css') }}" media="screen">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/editProfile.css') }}" media="screen">
+  <script class="u-script" type="text/javascript" src="{{ url_for('static',filename='js/jquery-1.9.1.min.js') }}"
+    defer=""></script>
+  <script class="u-script" type="text/javascript" src="{{ url_for('static',filename='js/nicepage.js') }}"
+    defer=""></script>
+  <meta name="generator" content="Nicepage 3.27.1, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "{{ url_for('static',filename='img/pixlr-bg-result1.png') }}",
+		"sameAs": []
+}</script>
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="Productos">
+  <meta property="og:type" content="website">
+</head>
+
+
+<div id="contenido">  </div>
+  <body class="u-body">
+
+
+    <section
+      class="u-align-center-lg u-align-center-md u-align-center-xl u-align-left-sm u-align-left-xs u-clearfix u-section-1"
+      id="carousel_176f">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h1 class="u-text u-text-1">
+          <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Edit profile</font>
+                      </font>
+                    </font>
+                  </font>
+                </font>
+              </font>
+            </font>
+          </font>
+        </h1>
+        <p class="u-large-text u-text u-text-variant u-text-2">
+          <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">IDENTIFICACIÓN: {{usuario.id}}</font>
+              </font>
+            </font>
+          </font>
+        </p>
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div
+                class="u-align-center-md u-align-left-sm u-align-left-xs u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+                <div class="u-container-layout u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-1">
+                  <div id="PictureProfile" alt="" class="u-image u-image-circle u-image-1" data-image-width="700" data-image-height="700" style="background-image: url({{usuario.picture}});">
+                  </div>
+
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">Modify image</a>
+                  <ul class="dropdown-menu">
+                    <li> <div class="mb-3">
+                      <form action="/Edit_Profile/SubirFoto" method="POST" enctype="multipart/form-data">
+                      <input class="form-control" type="file" id="formFile" name="fileimagen"><input type="submit" value="Guardar">
+                      </form>
+                    </div></li>
+                    {% if picture== "../static/img/USERimage.png" %}
+                      <li><a class="dropdown-item disabled" href="#">Delete image</a></li>
+                    {% else %}
+
+                      <li>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                          <a href="/Edit_Profile/EliminarImg"><button class="btn btn-primary" type="button" onclick="">Delete image</button></a>
+                        </div>
+                        </li>
+                        <!-- <li>
+                          <div><a class="dropdown-item" href="#">Delete image</a></div></li> -->
+                    {% endif %}
+
+                    <script>
+                      function eliminarImagen(){
+                        document.getElementById("PictureProfile").style.backgroundImage="url('../static/img/USERimage.png')"
+                        picture= "../static/img/USERimage.png";
+                      }
+                    </script>
+                  </ul>
+                </div>
+              </div>
+              <div class="u-container-style u-custom-color-2 u-layout-cell u-size-30 u-layout-cell-2">
+                <div class="u-container-layout u-valign-middle u-container-layout-2">
+                  <div class="u-form u-form-1">
+                    <form action="/Edit_Profile/ActualizarDatos" method="POST"
+                      class="u-clearfix u-form-spacing-40 u-form-vertical u-inner-form" style="padding: 0px;"
+                      source="email" name="form">
+                      <input type="hidden" id="siteId" name="siteId" value="807355">
+                      <input type="hidden" id="pageId" name="pageId" value="807362">
+                      <div class="u-form-group">
+                        <label for="email-319a" class="u-label u-text-body-alt-color u-label-1">
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                          <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">
+                                              <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">Name</font>
+                                              </font>
+                                            </font>
+                                          </font>
+                                        </font>
+                                      </font>
+                                    </font>
+                                  </font>
+                                </font>
+                              </font>
+                            </font>
+                          </font>
+                        </label>
+                        <input type="text" placeholder="Ingrese nombre nuevo" id="email-319a" name="Name"
+                          class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle"
+                          required="required" value="{{usuario.nombre}}">
+                      </div>
+                      <div class="u-form-email u-form-group u-form-group-2">
+                        <label for="address-452f" class="u-label u-text-body-alt-color u-label-2">
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                          <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">
+                                              <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">Email</font>
+                                              </font>
+                                            </font>
+                                          </font>
+                                        </font>
+                                      </font>
+                                    </font>
+                                  </font>
+                                </font>
+                              </font>
+                            </font>
+                          </font>
+                        </label>
+                        <input type="email" placeholder="Ingrese Email actual" id="address-452f" name="Email"
+                          class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle"
+                          required="required" value="{{usuario.email}}">
+                      </div>
+                      <div class="u-form-date u-form-group">
+                        <label for="message-319a" class="u-label u-text-body-alt-color u-label-3">
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                          <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">
+                                              <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">
+                                                  <font style="vertical-align: inherit;">
+                                                    <font style="vertical-align: inherit;">Age</font>
+                                                  </font>
+                                                </font>
+                                              </font>
+                                            </font>
+                                          </font>
+                                        </font>
+                                      </font>
+                                    </font>
+                                  </font>
+                                </font>
+                              </font>
+                            </font>
+                          </font>
+                        </label>
+                        <input placeholder="Ingrese su mensaje" rows="4" cols="50" id="message-319a" name="Age"
+                          class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle"
+                          required="required" type="date" value="{{usuario.fecha}}">
+                      </div>
+                      <div class="u-form-group u-form-group-4">
+                        <label for="address-46a5" class="u-label u-text-body-alt-color u-label-4">
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                          <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">
+                                              <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">
+                                                  <font style="vertical-align: inherit;">
+                                                    <font style="vertical-align: inherit;">Password</font>
+                                                  </font>
+                                                </font>
+                                              </font>
+                                            </font>
+                                          </font>
+                                        </font>
+                                      </font>
+                                    </font>
+                                  </font>
+                                </font>
+                              </font>
+                            </font>
+                          </font>
+                        </label>
+                        <input placeholder="Ingrese nueva contraseña" id="address-46a5" name="address"
+                          class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle"
+                          required="required" type="password" value="{{usuario.contra}}">
+                      </div>
+                      <div class="u-align-left u-form-group u-form-submit">
+                        <a href="#" class="u-btn u-btn-submit u-button-style u-white u-btn-2">
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                          <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">
+                                              <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">Actualizar</font>
+                                              </font>
+                                            </font>
+                                          </font>
+                                        </font>
+                                      </font>
+                                    </font>
+                                  </font>
+                                </font>
+                              </font>
+                            </font>
+                          </font>
+                        </a>
+                        <font style="vertical-align: inherit;">
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;">
+                                        <input type="submit" value="enviar" class="u-form-control-hidden">
+                                      </font>
+                                    </font>
+                                  </font>
+                                </font>
+                              </font>
+                            </font>
+                          </font>
+                        </font>
+                      </div>
+                      <div class="u-form-send-message u-form-send-success">
+                        <font style="vertical-align: inherit;">
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;"> ¡Gracias! </font>
+                                    </font>
+                                  </font>
+                                </font>
+                              </font>
+                            </font>
+                          </font>
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;">Tu mensaje ha sido enviado. </font>
+                                    </font>
+                                  </font>
+                                </font>
+                              </font>
+                            </font>
+                          </font>
+                        </font>
+                      </div>
+                      <div class="u-form-send-error u-form-send-message">
+                        <font style="vertical-align: inherit;">
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;"> Datos Actualizados. </font>
+                                    </font>
+                                  </font>
+                                </font>
+                              </font>
+                            </font>
+                          </font>
+                          <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                  <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;">Gracias.
+                                      </font>
+                                    </font>
+                                  </font>
+                                </font>
+                              </font>
+                            </font>
+                          </font>
+                        </font>
+                      </div>
+                      <input type="hidden" value="" name="recaptchaResponse">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+  </body>
+
+
+{% endblock %}

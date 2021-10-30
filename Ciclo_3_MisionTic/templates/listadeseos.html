@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %} Wishlist {% endblock title %}
+
+{% block content %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
+<style>
+    .dropdown-divider {
+        width: 99%;
+
+    }
+
+    .imagenes {
+        text-align: center;
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+    }
+
+    .product {
+        text-align: center;
+    }
+
+
+    .tabla {
+        border: 10px;
+        width: 80%;
+        padding: 15px;
+        margin: auto;
+    }
+
+    .tittle {
+        font-family: 'Noto Sans', sans-serif;
+        text-align: center;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="imagenes">
+        <img class="mb-4" src="{{ url_for('static',filename='img/wishlist.png') }}" alt="" width="100" height="80">
+        <h1 class="tittle">My wishlist</h1>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <!-- <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="select-all" document.write(x)
+                    onclick="SelectAll()" name="select-all">
+                Select All &nbsp
+            </div>
+            <button type="button" class="btn btn-primary">Delete</button>
+        </div> -->
+    </div>
+</div>
+<hr class="dropdown-divider">
+
+<br>
+
+<div class="tabla"> 
+    <table class="table table-success table-striped">
+        <thead>
+            <tr><th scope="col"></th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Price</th>
+                <th scope="col">Descripción</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        
+        
+        <tbody>
+            {% for deseo in deseos %}
+            <tr>
+                <td><img class="product" src="{{deseo.img}}" alt=""
+                    width="100" height="80">
+                <td>{{deseo.nombre}}</td>
+                <td>{{deseo.precio}}</td>
+                <td>{{deseo.des}}</td>
+                <td><div class="form-check">
+                    <button onclick="confirmarEliminar{{deseo.codigo}}()" type="button" name ="btnDelete" class="btn btn-primary">Delete</button>
+                </div></td>
+            </tr>
+            <script>
+                function confirmarEliminar{{deseo.codigo}}() {
+                    
+                    var verificar = confirm("Desea eliminar el producto de la lista de deseos?");   
+                    
+                    if (verificar){
+                        document.location="/listadeseos/eliminar/{{session.nomusuario}}/{{deseo.codigo}}"
+                    }
+ 
+                }
+            </script>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+    
+</div>
+
+<script>
+
+    var checkboxes = document.getElementsByName('lista');
+    function SelectAll() {
+        var select = document.getElementById('select-all');
+        
+        for (var checkbox of checkboxes) {
+            if (select.checked) {
+                checkbox.checked = true;
+            }
+            else {
+                checkbox.checked = false;
+            }
+        }
+
+    }
+</script>
+
+{% endblock %}

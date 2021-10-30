@@ -1,0 +1,170 @@
+#contenido {
+  width: 800px; margin: 0 auto;
+}
+.u-section-1-1 {
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("images/g43a62dfa68d2c1b30a7babd9195eb062fdb1a79e78d1f694c77aed0d9467e53dba619e6f2d3e601a8731bca03a1699af86b33674af54efb540379f62b541ce3f_1280.jpg");
+  background-position: 50% 50%;
+}
+
+.u-section-1-1 .u-sheet-1 {
+  min-height: 800px;
+}
+
+.u-section-1-1 .u-text-1 {
+  font-size: 6rem;
+  font-weight: 700;
+  margin: 65px auto 0;
+}
+
+.u-section-1-1 .u-text-2 {
+  margin: 30px auto 0;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1-1 .u-sheet-1 {
+    min-height: 660px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1-1 .u-sheet-1 {
+    min-height: 506px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1-1 .u-sheet-1 {
+    min-height: 444px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1-1 .u-sheet-1 {
+    min-height: 437px;
+  }
+
+  .u-section-1-1 .u-text-1 {
+    font-size: 3.75rem;
+  }
+}.u-section-1-2 {
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("images/gc8f7c5a24061dd76a5f3149b539cff994512228a6e2b5fd152dc3ecc22e62a1ed7ad27798e1f9e06278ea627809fcd34244b8fc6c771af56d07d41d6abdd65d2_1280.jpg");
+  background-position: 50% 50%;
+}
+
+.u-section-1-2 .u-sheet-1 {
+  min-height: 800px;
+}
+
+.u-section-1-2 .u-text-1 {
+  font-size: 6rem;
+  font-weight: 700;
+  margin: 65px auto 0;
+}
+
+.u-section-1-2 .u-text-2 {
+  margin: 30px auto 60px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1-2 .u-sheet-1 {
+    min-height: 660px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1-2 .u-sheet-1 {
+    min-height: 506px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1-2 .u-sheet-1 {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1-2 .u-sheet-1 {
+    min-height: 239px;
+  }
+
+  .u-section-1-2 .u-text-1 {
+    font-size: 3.75rem;
+  }
+}.u-section-1-3 {
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("images/g7924744af6fab36ab949ca28b9cc29ecebb7d7c4fbbc88542494b0d51d9bb0e9393067c1b03d83316e98ac72598e08498a7d61102c0454302c29d4aacae40752_1280.jpg");
+  background-position: 50% 50%;
+}
+
+.u-section-1-3 .u-sheet-1 {
+  min-height: 800px;
+}
+
+.u-section-1-3 .u-text-1 {
+  font-size: 6rem;
+  font-weight: 700;
+  margin: 65px auto 0;
+}
+
+.u-section-1-3 .u-text-2 {
+  margin: 30px auto 60px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1-3 .u-sheet-1 {
+    min-height: 660px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1-3 .u-sheet-1 {
+    min-height: 506px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1-3 .u-sheet-1 {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1-3 .u-sheet-1 {
+    min-height: 239px;
+  }
+
+  .u-section-1-3 .u-text-1 {
+    font-size: 3.75rem;
+  }
+}.u-block-0df9-2 {
+  position: absolute;
+  bottom: 10px;
+  width: auto;
+  height: auto;
+}
+
+.u-block-0df9-3 {
+  position: absolute;
+  left: 0;
+}
+
+.u-block-0df9-4 {
+  position: absolute;
+  right: 0;
+}
+
+#fondo {
+  background-image: url("images/hand-painted-watercolor-background-with-sky-and-clouds-shape.jpeg");
+  border: 0ch;
+}
+
+#fondo-productos {
+  background-image: url("images/rustic-wooden-plank-in-nature-product-background.jpeg") ;
+  border: 10px rgba(255, 255, 255, 0.123);
+  width: 120;
+}
+
+
+#imagen-productos{
+  box-shadow: 0 0 8px 8px white inset;
+}

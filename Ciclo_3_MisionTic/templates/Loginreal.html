@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %} Login {% endblock title %}
+
+{% block content %}
+ 
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+<!-- Custom styles for this template -->
+
+
+
+<main class="form-signin" style="max-width: 400px; margin: auto;">
+  <br>
+  <br>
+  <form method="post" action="/login/val">
+    <div style="padding-left: 100px;">
+    <img class="mb-4" src="{{ url_for('static',filename='img/logo.PNG') }}" alt="" width="200" height="100">
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <h1 class="h3 mb-3 fw-normal" >Please sign in </h1>
+    </div>
+    
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="usuario">
+      <label for="floatingInput">Usuario</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="contra">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div>
+      {% for msg in get_flashed_messages() %}
+      <br>
+      
+        <p style="color: red;">  {{msg}} </p> 
+      
+      {% endfor %}
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" >Sign in</button>
+    
+    <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+  </form>
+
+</div>
+<a href="" data-page-id="812472" class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-login-control u-login-forgot-password u-none u-text-palette-1-base u-btn-2">
+  <!-- <font style="vertical-align: inherit;">
+    <font style="vertical-align: inherit;">¿Se te olvidó tu contraseña?</font>
+  </font> -->
+</a>
+<a href="/login/Register" data-page-id="812472" class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-login-control u-login-create-account u-none u-text-palette-1-base u-btn-3">
+  <font style="vertical-align: inherit;">
+    <font style="vertical-align: inherit;">¿No tienes una cuenta?</font>
+  </font>
+</a>
+</div>
+</main>
+
+
+
+
+{% endblock %}
+
+<link href="{{ url_for('static',filename='css/signin.css') }}" rel="stylesheet">
+
